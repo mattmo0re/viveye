@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  viveye:
+    build: .
+    container_name: viveye-c2
+    ports:
+      - "3000:3000"
+      - "5000:5000"
+      - "5001:5001"
+      - "9050:9050"
+    volumes:
+      - ./tor:/workspace/tor
+      - ./logs:/workspace/logs
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=${MONGODB_URI:-mongodb://host.docker.internal:27017/viveye}
+      - JWT_SECRET=${JWT_SECRET:-your-super-secret-jwt-key-here}
+      - BCRYPT_ROUNDS=12
+    networks:
+      - viveye-network
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:7
+    container_name: viveye-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:-admin}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:-password}
+      - MONGO_INITDB_DATABASE=viveye
+    networks:
+      - viveye-network
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+
+networks:
+  viveye-network:
+    driver: bridge

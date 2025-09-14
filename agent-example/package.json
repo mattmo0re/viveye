@@ -1,0 +1,16 @@
+{
+  "name": "viveye-agent-example",
+  "version": "1.0.0",
+  "description": "Example VivEye agent client",
+  "main": "agent-client.js",
+  "scripts": {
+    "start": "node agent-client.js",
+    "test": "node agent-client.js BEACON_TEST AGENT_TEST"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.7.4"
+  },
+  "keywords": ["viveye", "agent", "client", "c2"],
+  "author": "VivEye Team",
+  "license": "MIT"
+}

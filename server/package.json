@@ -1,0 +1,36 @@
+{
+  "name": "viveye-server",
+  "version": "1.0.0",
+  "description": "VivEye Backend API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:agent": "node agent-server.js",
+    "dev": "concurrently \"nodemon index.js\" \"nodemon agent-server.js\"",
+    "dev:api": "nodemon index.js",
+    "dev:agent": "nodemon agent-server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.0.3",
+    "pg": "^8.11.3",
+    "socket.io": "^4.7.4",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2"
+  }
+}
